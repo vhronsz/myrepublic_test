@@ -1,8 +1,6 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URL;
@@ -13,7 +11,7 @@ import java.net.http.HttpResponse;
 //
 public class Main {
     public static void main(String[] args) {
-        String urlString = "https://api.example.com/data"; // Replace with your JSON URL
+        String urlString = "https://jsonplaceholder.typicode.com/users/2"; // Replace with your JSON URL
         try {
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
@@ -30,8 +28,11 @@ public class Main {
                 String email = json.getString("email");
                 String phone = json.getString("phone");
 
-                //Check first if success
-                System.out.println("JSON Response: " + json.toString(4)); // Pretty print JSON
+                System.out.println("Name: " + name);
+                System.out.println("Website: " + website);
+                System.out.println("Email: " + email);
+                System.out.println("Phone: " + phone);
+
             } else {
                 System.out.println("HTTP error code: " + response.statusCode());
             }
